@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: brush;
+    src: url(/src/assets/Grindy\ Brush.otf);
+}
+
+body{
+    
+    font-family: "brush",Arial, Helvetica, sans-serif;
+}
