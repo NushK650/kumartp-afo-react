@@ -41,12 +41,22 @@ const HW = () => {
   };
 
   const GO = async () => {
-    const data = await getComputerChoice(name, place , adjective , activity)
-    setDisplayText(data);
-    setShowDisplay(true)
-    setShowInput(false);
-    setShowPA(true);
-    setShowGO(false);
+    if(!name || !place || !adjective || !activity ){
+        setDisplayText("Invalid")
+        setShowPA(true);
+        setShowGO(false);
+        setShowInput(false);
+        setShowDisplay(true)
+
+    }else{
+
+        const data = await getComputerChoice(name, place , adjective , activity)
+        setDisplayText(data);
+        setShowDisplay(true)
+        setShowInput(false);
+        setShowPA(true);
+        setShowGO(false);
+    }
   };
   return (
     <>
