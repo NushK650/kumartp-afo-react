@@ -41,12 +41,22 @@ const HW = () => {
   };
 
   const GO = async () => {
-    const data = await getComputerChoice(name, place , adjective , activity)
-    setDisplayText(data);
-    setShowDisplay(true)
-    setShowInput(false);
-    setShowPA(true);
-    setShowGO(false);
+    if(!name || !place || !adjective || !activity ){
+        setDisplayText("Invalid")
+        setShowPA(true);
+        setShowGO(false);
+        setShowInput(false);
+        setShowDisplay(true)
+
+    }else{
+
+        const data = await getComputerChoice(name, place , adjective , activity)
+        setDisplayText(data);
+        setShowDisplay(true)
+        setShowInput(false);
+        setShowPA(true);
+        setShowGO(false);
+    }
   };
   return (
     <>
@@ -65,15 +75,16 @@ const HW = () => {
         >
           {displayText}
         </h1>
-        
+
+        <div className="flex flex-col lg:flex-row justify-center items-center lg:justify-evenly gap-6 mt-40" >
         <input
           value={name}
           onChange={(event) => setName(event.target.value)}
           className={`${
             showInput ? "flex" : "hidden"
-          }  justify-self-center mt-40 indent-2 border-4 border-black bg-white rounded-[25px]  h-15 text-[25px]`}
+          }  border-4 border-black bg-white rounded-[25px]  h-20 w-80 sm:w-125 text-[30px] indent-1`}
           type="text"
-          placeholder="Input..."
+          placeholder="Name:"
         />
 
         <input
@@ -81,19 +92,20 @@ const HW = () => {
           onChange={(event) => setPlace(event.target.value)}
           className={`${
             showInput ? "flex" : "hidden"
-          }  justify-self-center mt-40 indent-2 border-4 border-black bg-white rounded-[25px]  h-15 text-[25px]`}
+          }  border-4 border-black bg-white rounded-[25px]  h-20 w-80 sm:w-125 text-[30px] indent-1`}
           type="text"
-          placeholder="Input..."
+          placeholder="Place: "
         />
-
+        </div>
+<div className="flex flex-col lg:flex-row justify-center items-center lg:justify-evenly gap-4 mt-40" >
         <input
           value={adjective}
           onChange={(event) => setAdjective(event.target.value)}
           className={`${
             showInput ? "flex" : "hidden"
-          }  justify-self-center mt-40 indent-2 border-4 border-black bg-white rounded-[25px]  h-15 text-[25px]`}
+          }  border-4 border-black bg-white rounded-[25px]  h-20 w-80 sm:w-125 text-[30px] indent-1`}
           type="text"
-          placeholder="Input..."
+          placeholder="Adjective:"
         />
 
         <input
@@ -101,10 +113,11 @@ const HW = () => {
           onChange={(event) => setActivity(event.target.value)}
           className={`${
             showInput ? "flex" : "hidden"
-          }  justify-self-center mt-40 indent-2 border-4 border-black bg-white rounded-[25px]  h-15 text-[25px]`}
+          }  border-4 border-black bg-white rounded-[25px]  h-20 w-80 sm:w-125 text-[30px] indent-1`}
           type="text"
-          placeholder="Input..."
+          placeholder="Activity: "
         />
+</div>
 
         <button
           onClick={playAgain}
